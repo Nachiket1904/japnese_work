@@ -6,15 +6,11 @@ from PIL import Image
 from io import BytesIO
 from pathlib import Path
 import base64
-import requests
-from bs4 import BeautifulSoup
+import os
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium import webdriver
-import os
 from utility.utility_function import scrape_content, full_screenshot_with_scroll, get_farthest_points, map_to_value
 
 # Streamlit App
@@ -38,7 +34,7 @@ if st.button("Generate Output"):
 
         # Set up Chrome options
         chrome_options = Options()
-        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--headless")  # Running Chrome in headless mode
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
@@ -49,7 +45,7 @@ if st.button("Generate Output"):
         # Create WebDriver instance
         driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
         driver.get(url)
-        
+
         # Capture a full screenshot and process it
         screenshot_path = Path("scrolled_page.png")
         full_screenshot_with_scroll(driver, screenshot_path)
