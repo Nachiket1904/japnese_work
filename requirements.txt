@@ -1,7 +1,7 @@
 setuptools
 streamlit==1.37.0
 opencv-python-headless==4.7.0.72
-numpy==1.24.4
+numpy==1.26.4
 Pillow
 selenium==4.18.1
 webdriver-manager==4.0.2
